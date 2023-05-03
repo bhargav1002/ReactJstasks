@@ -6,6 +6,12 @@ export default function Td(props) {
     const [cell, setCell] = useState([]);
     const [alreadybooked, setAlreadybooked] = useState(props.data.AlreadyBooked);
     const [booked, setbooked] = useState([]);
+    const [row,setrow] = useState(props.data.row);
+
+    const valueHandler = (obj) =>
+    {
+        props.valueHandler(row,obj);
+    }
 
     useEffect(() =>
     {
@@ -26,9 +32,10 @@ export default function Td(props) {
 
   return (
       <tr>
+        {console.log(props.data.row)}
         {cell.map((obj,i) =>
         {
-            return (<Tdata obj={obj} key={i} alreadybooked={alreadybooked} i={i} booked={booked}></Tdata>)
+            return (<Tdata obj={obj} key={i} alreadybooked={alreadybooked} i={i} booked={booked} valueHandler={valueHandler}></Tdata>)
         })}
       </tr>
   )

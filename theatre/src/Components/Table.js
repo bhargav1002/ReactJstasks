@@ -9,9 +9,8 @@ export default function Table() {
     const [rows, setRows] = useState([]);
     const [movie, setMovie] = useState('');
     const [basicprice, setBasicprice] = useState('');
-    const [noofBookedSeat, setNoofBookedSeat] = useState('');
-    const [totalamount, setTotalamount] = useState('');
-    const [tax, setTax] = useState('');
+    const [noofBookedSeat, setNoofBookedSeat] = useState(0);
+    const [totalamount, setTotalamount] = useState(0);
 
 
     useEffect(() =>
@@ -41,11 +40,14 @@ export default function Table() {
             <tbody>
                 {rows.map((obj,i)=>
                 {
-                    return (<Trow data={obj} key={i} setNoofBookedSeat={setNoofBookedSeat} totalamount={totalamount} tax={tax}></Trow>)
+                    return (<Trow data={obj} key={i} noofBookedSeat={noofBookedSeat} setNoofBookedSeat={setNoofBookedSeat} setTotalamount={setTotalamount}  basicprice={basicprice} totalamount={totalamount}></Trow>)
                 })}
             </tbody>    
         </table>
-          <Userdata movie={movie} noofBookedSeat={noofBookedSeat} totalamount={totalamount} tax={tax}></Userdata>
+        <br></br>
+        <br></br>
+        <br></br>
+          <Userdata movie={movie} noofBookedSeat={noofBookedSeat} totalamount={totalamount}></Userdata>
     </div>
   )
 }
